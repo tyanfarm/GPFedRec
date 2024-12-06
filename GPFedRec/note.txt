@@ -1,0 +1,47 @@
+- GPFedRec khác gì Federated thông thường:
+	+ Federated thông thường: tổng hợp xu hướng chung từ dữ liệu lấy từ những người dùng đơn lẻ.
+	+ GPFedRec: tạo đồ thi quan hệ người dùng trên server để có được mối tương quan giữa người dùng có sở thích tương tự. 
+
+- U và I là tập hợp chứa danh sách người dùng và mục.
+- User embeddings và item embeddings là biểu diễn véc-tơ của từng người dùng và item trong tập hợp đó.
+
+
+- Item embedding: Chuyển đổi thông tin của item thành một vectơ biểu diễn trong không gian đa chiều.
+- User embedding: Tương tự, user embedding cũng chuyển đổi thông tin người dùng thành một vectơ trong không gian đa chiều
+
+- Score Function (Hàm đánh giá): 
+	+ Dự đoán mức độ ưa thích của người dùng đối với một item cụ thể.
+	+ Hàm số F(u, m | θ), nhận đầu vào u của tập hợp U và m của tập hợp I, trả về 1 giá trị số thực đại diện cho độ yêu thích của ng dùng u với item m.
+	+ Tham số θ được điều chỉnh trong quá trình huấn luyện để tối ưu hóa khả năng dự đoán của hàm
+
+- A là ma trận kề người dùng: A ∈ {0, 1}^(𝑁 × 𝑁)
+
+- Hàm mất mát Li (Loss Function):
+	+ Đầu vào:
+		- 𝜃i: Tập hợp các tham số của mô hình đề xuất trên client thứ i. Bao gồm pi, qi, oi
+		- Dữ liệu tương tác: 
+			+ Di - tập hợp các cặp (user, item) user đã tương tác trên client i  
+			+ D-i - tập hợp các cặp (user, item) được lấy ngẫu nhiên, đại diện cho item mà user chưa tương tác. 
+			+ Yum: giá trị thực tế cho biết user u đã tương tác với item m chưa (1: đã tương tác, 0: chưa tương tác)
+			+ Ŷum: Điểm số dự đoán của mô hình cho user u và item m.
+	+ Đầu ra:
+		Một giá trị số thực, thể hiện `sự chênh lệch (sai số)` giữa điểm số dự đoán và giá trị thực tế
+
+	+ Hàm mất mát so sánh Ŷum (điểm số dự đoán) với Yum (giá trị thực tế) để tính toán sai số của mô hình.
+		
+
+- Item embedding ở client và User-specific item embedding ở server:
+	+ Item embedding ở client: Điều chỉnh Globally Shared Item Embedding (ri - trọng số chung) từ server gửi về và dữ liệu tương tác của người dùng để khiến item embeddings phản ánh sở thích của người dùng
+	+ User-specific item embeddings trên server: được tạo ra dựa trên đồ thị quan hệ người dùng. Nó giống như tổng hợp sở thích chung của từng nhóm người dùng, sau đó đóng vai trò như 1 `vật điều chỉnh (regularizer)` giúp các mô hình client học hỏi từ sở thích của người dùng tương đồng.
+
+-  𝑅=A^𝑙 * Q
+	+ A: ma trận kề người dùng
+	+ Q: ma trận vectơ item nhúng ban đầu. Mỗi hàng đại diện cho vecto item nhúng của client i.
+	+ R: ma trận vecto item nhúng user-specific đã được tổng hợp. Mỗi hàng đại diện cho user-specific item nhúng của client i.
+	+ l: số tích chập.
+
+- q global = DQ
+	+ Phép 
+
+
+

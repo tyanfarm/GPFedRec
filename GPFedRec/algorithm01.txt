@@ -1,0 +1,59 @@
+Giải thích Thuật toán 1: Quy trình tối ưu hóa GPFedRec
+Thuật toán 1 mô tả chi tiết quy trình tối ưu hóa của mô hình đề xuất GPFedRec, bao gồm các bước cập nhật thông tin trên server và client để đạt được hiệu quả đề xuất tốt nhất.
+Mục tiêu của thuật toán: Tìm ra tập hợp tham số tối ưu (𝜃∗) cho mô hình GPFedRec, đảm bảo cân bằng giữa việc cá nhân hóa cho từng client và hiệu quả chung của toàn bộ hệ thống.
+Các bước chính của thuật toán:
+1. Khởi tạo (Dòng 1-2):
+●
+Dòng 1: Khởi tạo các siêu tham số của mô hình, bao gồm:
+○
+𝜆: Hệ số điều chuẩn (regularization coefficient).
+○
+𝜂: Tốc độ học (learning rate).
+○
+𝛾: Hệ số điều chỉnh ngưỡng tìm kiếm hàng xóm (scaling factor).
+○
+{𝑝<sup>(1)</sup><sub>𝑖</sub>, 𝑞<sup>(1)</sup><sub>𝑖</sub> , 𝑜<sup>(1)</sup><sub>𝑖</sub> }<sup>𝑁</sup><sub>𝑖=1</sub>: Tập hợp các tham số ban đầu cho mô hình đề xuất của mỗi client 𝑖, bao gồm:
+■
+𝑝<sup>(1)</sup><sub>𝑖</sub>: Tham số của mô-đun vectơ nhúng người dùng.
+■
+𝑞<sup>(1)</sup><sub>𝑖</sub>: Tham số của mô-đun vectơ nhúng item.
+■
+𝑜<sup>(1)</sup><sub>𝑖</sub>: Tham số của mô-đun hàm tính điểm.
+●
+Dòng 2: Khởi tạo vectơ nhúng item đặc thù cho từng người dùng (user-specific item embedding): {𝑟<sup>(1)</sup><sub>𝑖</sub>}<sup>𝑁</sup><sub>𝑖=1</sub> ← {𝑞<sup>(1)</sup><sub>𝑖</sub>}<sup>𝑁</sup><sub>𝑖=1</sub>.
+2. Vòng lặp tối ưu hóa liên bang (Dòng 3-16):
+●
+Vòng lặp này được thực hiện qua nhiều vòng giao tiếp (communication round) giữa server và các client.
+●
+Dòng 3: Vòng lặp ngoài, lặp qua các vòng giao tiếp 𝑡 = 1, 2, ...,𝑇.
+○
+Cập nhật server với cơ chế tổng hợp hướng dẫn bởi đồ thị (Dòng 4-8):
+■
+Dòng 5: Server tính toán độ tương đồng giữa các vectơ nhúng item cục bộ (q<sub>i</sub>) được gửi lên từ các client (xem công thức (4) trong nguồn cung cấp).
+■
+Dòng 6: Dựa trên độ tương đồng đã tính, server xây dựng đồ thị người dùng G(A)<sup>(𝑡)</sup>, trong đó A<sup>(𝑡)</sup> là ma trận kề của đồ thị ở vòng 𝑡 (xem công thức (5) trong nguồn cung cấp).
+■
+Dòng 7: Sử dụng đồ thị người dùng và ma trận vectơ nhúng item ban đầu Q, server tính toán vectơ nhúng item đặc thù cho từng người dùng {𝑟<sup>(𝑡+1)</sup><sub>𝑖</sub>}<sup>𝑁</sup><sub>𝑖=1</sub> (xem công thức (6) trong nguồn cung cấp).
+■
+Dòng 8: Server tính toán vectơ nhúng item chung (q<sub>global</sub>) dựa trên trung bình có trọng số của các vectơ nhúng item đặc thù cho từng người dùng (xem công thức (7) trong nguồn cung cấp).
+○
+Cập nhật client với điều chuẩn (Dòng 9-15):
+■
+Dòng 10: Vòng lặp trong, lặp qua tất cả các client 𝑖 = 1, 2, ..., 𝑁 song song.
+●
+Dòng 11: Vòng lặp trong cùng, lặp qua các epoch 𝑒 từ 1 đến 𝐸.
+○
+Dòng 12: Mỗi client cập nhật các tham số mô hình cục bộ (𝑝<sup>(𝑡)</sup><sub>𝑖</sub>, 𝑞<sup>(𝑡)</sup><sub>𝑖</sub> , 𝑜<sup>(𝑡)</sup><sub>𝑖</sub> ) bằng cách sử dụng thuật toán Stochastic Gradient Descent (SGD) và hàm mất mát L<sub>total</sub> (xem công thức (9) trong nguồn cung cấp). Hàm mất mát này bao gồm:
+■
+L<sub>𝑖</sub>(𝜃<sub>𝑖</sub>;Y<sub>𝑢𝑚</sub>, Ŷ<sub>𝑢𝑚</sub>): Hàm mất mát của mô hình đề xuất (xem công thức (2) trong nguồn cung cấp).
+■
+𝜆R(𝑞<sub>𝑖</sub>, 𝑟<sub>𝑖</sub>): Hạng mục điều chuẩn, đảm bảo vectơ nhúng item cục bộ (q<sub>i</sub>) không quá xa so với vectơ nhúng item đặc thù cho người dùng (r<sub>i</sub>).
+●
+Dòng 14: Cập nhật các tham số mô hình cục bộ sau khi hoàn thành 𝐸 epoch.
+●
+Dòng 16: Kết thúc vòng lặp ngoài.
+Lưu ý:
+●
+Thuật toán 1 không đề cập chi tiết đến việc gửi vectơ nhúng item (q<sub>i</sub>) từ client lên server, nhưng dựa trên các phần khác của nguồn cung cấp, ta có thể hiểu rằng bước này diễn ra sau khi client hoàn thành cập nhật cục bộ.
+●
+Vòng lặp tối ưu hóa liên bang (dòng 3-16) có thể dừng lại khi đạt được một số điều kiện dừng nhất định, ví dụ như số vòng lặp tối đa, hoặc khi hiệu suất mô hình không còn cải thiện.
