@@ -11,17 +11,17 @@ Cách hoạt động: LightGCN lan truyền thông tin qua đồ thị để là
 Cách thực hiện:
 Các sản phẩm được liên kết dựa trên tính liền kề (adjacency) trong chuỗi tương tác.
 Mô hình học cách dự đoán sản phẩm tiếp theo dựa trên cấu trúc đồ thị của chuỗi.
-Tham chiếu: Các nghiên cứu [21, 28] đã phát triển các phương pháp gợi ý theo chuỗi dựa trên đồ thị.
+Tham chiếu: Các nghiên cứu [21, 28] [` Streaming Session-Based Recommendation: When Graph Neural Networks meet the Neighborhood. `, ` Star graph neural networks for session-based recommendation`] đã phát triển các phương pháp gợi ý theo chuỗi dựa trên đồ thị.
 Ứng dụng: Phù hợp với các kịch bản như gợi ý video tiếp theo trên YouTube hoặc sản phẩm tiếp theo trong giỏ hàng.
 ### 3. Gợi ý Xã hội (Social Recommendation)
 Ý tưởng: Kết hợp thông tin từ mạng xã hội để cải thiện mô hình hóa người dùng, dựa trên giả định rằng những người có quan hệ xã hội (như bạn bè) sẽ có sở thích tương tự.
 Hai cách tiếp cận:
-Tách biệt hai đồ thị: Một số nghiên cứu [41] sử dụng đồ thị tương tác người dùng-sản phẩm và đồ thị mạng xã hội riêng lẻ để học biểu diễn người dùng, sau đó kết hợp chúng.
-Hợp nhất đồ thị: Các nghiên cứu khác [40] tích hợp cả hai loại đồ thị (tương tác và xã hội) thành một đồ thị thống nhất để học biểu diễn người dùng cải tiến.
+Tách biệt hai đồ thị: Một số nghiên cứu [41] `Aneural influence diffusion model for social recommendation` sử dụng đồ thị tương tác người dùng-sản phẩm và đồ thị mạng xã hội riêng lẻ để học biểu diễn người dùng, sau đó kết hợp chúng.
+Hợp nhất đồ thị: Các nghiên cứu khác [40] ` A neural influence and interest diffusion network for social recommendation.` tích hợp cả hai loại đồ thị (tương tác và xã hội) thành một đồ thị thống nhất để học biểu diễn người dùng cải tiến.
 Ý nghĩa: Cách tiếp cận này khai thác thêm thông tin xã hội, giúp mô hình gợi ý chính xác hơn trong các nền tảng như mạng xã hội.
 ### 4. Gợi ý Dựa trên Đồ thị Tri thức (Knowledge Graph-based Recommendation)
 Ý tưởng: Kết hợp đồ thị tri thức (knowledge graph) vào hệ thống gợi ý để bổ sung thông tin phụ (side information), như đặc điểm sản phẩm (ví dụ: thể loại phim, thương hiệu sản phẩm).
-Cách thực hiện: Các nghiên cứu [36, 44, 51] xây dựng mô hình gợi ý bằng cách tích hợp thông tin từ đồ thị tri thức vào quá trình học biểu diễn.
+Cách thực hiện: Các nghiên cứu [36, 44, 51] [ ` Learning intents behind interactions with knowledge graph for recommendation.`, `Knowledge graph contrastive learning for recommendation`, `Multi-level cross-view contrastive learning for knowledge aware recommender system. ` ] xây dựng mô hình gợi ý bằng cách tích hợp thông tin từ đồ thị tri thức vào quá trình học biểu diễn.
 Ví dụ: Trong gợi ý phim, đồ thị tri thức có thể chứa thông tin về đạo diễn, diễn viên, hoặc thể loại, giúp mô hình hiểu sâu hơn về sản phẩm.
 Ưu điểm: Tăng cường khả năng gợi ý bằng cách kết hợp thông tin ngữ nghĩa phong phú.
 Hạn chế của Các Phương pháp Hiện tại
