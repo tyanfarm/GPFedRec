@@ -51,12 +51,12 @@ Xử lý dữ liệu không đồng nhất: FL được thiết kế để xử 
     + Tiến bộ gần đây: Tích hợp FMs như ChatGPT với các hệ thống như Federated Adaptation và Fellas, cải thiện hiệu suất và cá nhân hóa.
 
 #### Hệ thống Dựa trên Ma trận Tương tác
-+ FCF [Ammad-Ud-Din et al., 2019]: Là phương pháp lọc hợp tác dựa trên FL đầu tiên, sử dụng gradient ngẫu nhiên để cập nhật mô hình cục bộ và FedAvg để cập nhật mô hình toàn cầu.
-+ FedMF [Chai et al., 2020]: Thích nghi phân tích ma trận phân phối với FL, giới thiệu mã hóa đồng hình trên gradient để bảo vệ quyền riêng tư trước khi tải lên máy chủ.
-+ MetaMF [Lin et al., 2020b]: Khung phân tích ma trận phân phối với mạng meta để tạo mô hình dự đoán đánh giá và nhúng mục tư nhân, nhưng máy chủ có thể rò rỉ thông tin tương tác người dùng.
-FedRecon [Singhal et al., 2021]: Phương pháp dựa trên meta-learning, bảo tồn mô hình cục bộ cho mỗi client và huấn luyện mô hình toàn cầu với FedAvg.
++ FCF [Ammad-Ud-Din, 2019]: Là phương pháp lọc hợp tác dựa trên FL đầu tiên, sử dụng gradient ngẫu nhiên để cập nhật mô hình cục bộ và FedAvg để cập nhật mô hình toàn cầu.
++ FedMF [Chai, 2020]: Thích nghi phân tích ma trận phân phối với FL, giới thiệu mã hóa đồng hình trên gradient để bảo vệ quyền riêng tư trước khi tải lên máy chủ.
++ MetaMF [Lin, 2020b]: Khung phân tích ma trận phân phối với mạng meta để tạo mô hình dự đoán đánh giá và nhúng mục tư nhân, nhưng máy chủ có thể rò rỉ thông tin tương tác người dùng.
+FedRecon [Singhal, 2021]: Phương pháp dựa trên meta-learning, bảo tồn mô hình cục bộ cho mỗi client và huấn luyện mô hình toàn cầu với FedAvg.
 + FedNCF [Perifanis và Efraimidis, 2022]: Thích nghi Lọc hợp tác thần kinh (NCF) với FL, sử dụng mạng thần kinh để học hàm tương tác người dùng-mục, nâng cao khả năng học của mô hình.
-+ PFedRec [Zhang et al., 2023]: Khung FedRec cá nhân hóa, loại bỏ nhúng người dùng và học hàm điểm số cá nhân hóa để nắm bắt sở thích người dùng, nhưng bỏ qua mối quan hệ giữa các người dùng.
++ PFedRec [Zhang, 2023]: Khung FedRec cá nhân hóa, loại bỏ nhúng người dùng và học hàm điểm số cá nhân hóa để nắm bắt sở thích người dùng, nhưng bỏ qua mối quan hệ giữa các người dùng.
 
 #### Hệ thống Sử dụng Thông tin Phong phú
 + FedFast [Muhammad, 2020]: Mở rộng FedAvg với phương pháp tổng hợp chủ động để tăng tốc độ hội tụ, sử dụng nhiều nguồn dữ liệu như đặc trưng người dùng và thuộc tính tin tức. (https://www.researchgate.net/publication/343782627_FedFast_Going_Beyond_Average_for_Faster_Training_of_Federated_Recommender_Systems)
