@@ -29,7 +29,8 @@ Vấn đề bảo mật: Các phương pháp hiện tại thường thu thập d
 
 ### 5. Kết hợp Graph Attention Network vào Gợi ý Xã hội
 Ý tưởng: Kết hợp Học Liên Kết Phân Tán (Federated Learning) và Mạng Nơ-ron Đồ thị Chú ý (Graph Attention Networks - GATs) để cải thiện các khuyến nghị xã hội trong khi bảo vệ quyền riêng tư của người dùng. Phương pháp này tận dụng GATs để học biểu diễn từ các đồ thị xã hội và tương tác người dùng-sản phẩm, đồng thời sử dụng Federated Learning để huấn luyện mô hình mà không cần tập trung hóa dữ liệu nhạy cảm.
-Ví dụ: *Enhancing Federated Learning-Based Social Recommendations with Graph Attention Networks*
+Ví dụ: *Enhancing Federated Learning-Based Social Recommendations with Graph Attention Networks* (https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4978530)
+
 Cách thực hiện: GATs học biểu diễn từ đồ thị xã hội tại client cục bộ, sau đó mới cập nhật lên server để tổng hợp, đảm bảo quyền riêng tư.
 Ưu điểm: Bảo vệ quyền riêng tư bằng cách không chia sẻ dữ liệu thô. Nâng cao chất lượng gợi ý nhờ khai thác thông tin xã hội và tương tác qua GATs. 
 
