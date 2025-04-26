@@ -19,8 +19,8 @@
     + $W_1$: ma trận trọng số GAT cho item-item
     + $W_2$: ma trận trọng số GAT cho user-user
     + $W_3$: ma trận trọng số GAT cho user-item
-    + $W_g$: ma trận trọng số tổng hợp neighbor của item để self-attention + update lại embedding item
-    + $W_h$: ma trận trọng số tổng hợp neighbor của user (user & item) để self attention + update lại embedding user
+    + $W_g$: ma trận trọng số tổng hợp neighbor của item (neighbor là items) để self-attention + update lại embedding item
+    + $W_h$: ma trận trọng số tổng hợp neighbor của user (neighbor là users & items) để self attention + update lại embedding user
     + $a,b,c,d,e$: lần lượt là các tham số cho GAT item-item, GAT user-user, GAT user-item, self-attention item, self-attention user 
     + $u_i​,u_s​,v_u​,v_i​,v_s$: vectơ quan hệ (table II ghi), mục đích giống $a,b,c,d,e$ ở trên
 
