@@ -20,7 +20,7 @@
     + $W_g$: ma trận trọng số tổng hợp neighbor của item để self-attention + update lại embedding item
     + $W_h$: ma trận trọng số tổng hợp neighbor của user (user & item) để self attention + update lại embedding user
     + $a,b,c,d,e$: lần lượt là các tham số cho GAT item-item, GAT user-user, GAT user-item, self-attention item, self-attention user 
-    +$u_i​,u_s​,v_u​,v_i​,v_s$: vectơ quan hệ (table II ghi), mục đích giống $a,b,c,d,e$ ở trên
+    + $u_i​,u_s​,v_u​,v_i​,v_s$: vectơ quan hệ (table II ghi), mục đích giống $a,b,c,d,e$ ở trên
 
 - Sau bước self-attention để update user embedding & item embedding, ta sẽ có $e_u^*$ & $e_i^*$, sẽ có 1 hàm Loss $L$ để tính.
 
