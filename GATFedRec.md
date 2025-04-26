@@ -24,7 +24,7 @@
     + $a,b,c,d,e$: lần lượt là các tham số cho GAT item-item, GAT user-user, GAT user-item, self-attention item, self-attention user 
     + $u_i​,u_s​,v_u​,v_i​,v_s$: vectơ quan hệ (table II ghi), mục đích giống $a,b,c,d,e$ ở trên
 
-- Sau bước self-attention để update user embedding & item embedding, ta sẽ có $e_u^{*}$ & $e_i^{*}$, sẽ có 1 hàm Loss $L$ để tính.
+- Sau bước self-attention để update user embedding & item embedding, ta sẽ có $e_u*$ & $e_i*$, sẽ có 1 hàm Loss $L$ để tính.
 
 - Với bộ tham số $Θ$={$E_u​,E_i​,W_1​,W_2​,W_3​,W_g​,W_h​,a,b,c,d,f,u_i​,u_s​,v_u​,v_i​,v_s$​}, tính đạo hàm L trên từng tham số {$\frac{L}{θ} | θ ∈ Θ$}
 
