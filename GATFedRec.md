@@ -1,3 +1,5 @@
+# Dataset
+- https://www.kaggle.com/datasets/aravindaraman/ciao-data
 # 1. Định nghĩa
 - U = {u₁, u₂, …, u_N}: tập N người dùng.
 - I = {i₁, i₂, …, i_M}: tập M mục (items).
